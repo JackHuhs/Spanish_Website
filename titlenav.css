@@ -1,0 +1,67 @@
+body {background-color:lightskyblue}
+/*@font-face {
+    font-family: Akronim;
+    src: url(Fonts/Akronim/Akronim-Regular.ttf);
+}*/
+@font-face {
+    font-family: EnglishSC;
+    src: url(Fonts/English_SC/EnglishSCRegular.ttf) /*from google fonts*/
+}
+/* title */
+.titleTop {
+    font-family: EnglishSC;
+    color: violet;
+    font-size: 28.5px;
+    padding-left: 10px;
+    padding-right: 600px;
+    padding-bottom: 0px;
+    overflow: hidden;
+    background-color: #ffccd5;
+    white-space: nowrap;
+    margin-bottom: -5px;
+    z-index: 3;
+    left:395px;
+}
+.titleLogo {
+    padding-top: 0px;
+    padding-left: 250px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    overflow: hidden;
+    background-color: #ffccd5;
+    white-space: nowrap;
+    margin-bottom: -5px;
+    z-index: 3;
+}
+/* navigation bar */
+.navbar {
+    /*background-color: yellow;*/
+    overflow: hidden;
+    font-family: EnglishSC;
+    font-size: 20px;
+}
+.inactive {
+    float: left;
+    color: violet;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: lightyellow;
+    border-radius: 0px 0px 15px 15px;
+    margin-right: 5px;
+    z-index: 2;
+}
+.inactive:hover {
+    background-color: purple;
+}
+.active {
+    float: left;
+    color: violet;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: seagreen;
+    border-radius: 0px 0px 15px 15px;
+    margin-right: 5px;
+    z-index: 2;
+}

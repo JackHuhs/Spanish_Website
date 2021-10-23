@@ -1,0 +1,65 @@
+.mainText {
+    font-family:EnglishSC;
+    font-size:50px;
+    color:seagreen;
+    overflow:hidden;
+    white-space: nowrap;
+}
+.secondText {
+    font-family:EnglishSC;
+    font-size:30px;
+    color:seagreen;
+    overflow:hidden;
+    white-space: nowrap;
+}
+td {
+    border-style:solid;
+    font-family:EnglishSC;
+    color:seagreen;
+    /*border-color:black;*/
+    overflow:hidden;
+    white-space: nowrap;
+    margin-left:-5;
+    margin-right:-5;
+    margin-top:-5;
+    margin-bottom:-5;
+    background-color:pink;
+    text-align:center;
+}
+th {
+    border-style:solid;
+    font-family:EnglishSC;
+    color:seagreen;
+    /*border-color:black;*/
+    overflow:hidden;
+    white-space: nowrap;
+    margin-left:-5;
+    margin-right:-5;
+    margin-top:-5;
+    margin-bottom:-5;
+    background-color:lightyellow;
+}
+.tableHeaders {
+    font-size:35;
+    font-weight:1000;
+    background-color:lightyellow;
+}
+.dot {
+    height:200px;
+    width:200px;
+    border-radius:50%;
+    display:inline-block;
+    border-style:solid;
+    border-color:black;
+}
+.inputClass {
+    background-color:lightyellow;
+    border-width:1px;
+    border-radius:2px;
+    font-family:EnglishSC;
+    color:seagreen;
+}
+table {
+    border-style:dashed;
+    border-color:seagreen;
+}
