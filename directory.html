@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Directorio</title>
+        <link rel="shortcut icon" href="Images/LogoIcon.ico">
+        <link rel="stylesheet" href="titlenav.css">
+        <link rel="stylesheet" href="maintext.css">
+        <script src="https://cdn.jsdelivr.net/npm/firebase@8.3.2/firebase.js" type="module"></script>
+        <script type="module">
+            //preset table
+            document.getElementById("StudentInfo").innerHTML = "<tr><th>Nombre Completo</th><th>Año</th><th>E-mail</th></tr>";
+
+            //functions
+
+            //sort results by alphabetical first name
+            function sortFirebaseResults(arr){//[{Name:},{Year:},{Email:}]
+                var sortedResults=[];
+                for (var i=0;i<arr.length;i++){
+                    var a=0;
+                    for (a=0;a<sortedResults.length;a++){
+                        var arrName=arr[i]["Name"].toUpperCase();
+                        var sortName=sortedResults[a]["Name"].toUpperCase();
+                        while (arrName.length<sortName.length){arrName+=" ";}
+                        while (arrName.length>sortName.length){sortName+=" ";}
+                        var sortGreater=null;
+                        for (var b=0;b<sortedResults[a]["Name"].length;b++){
+                            if(arrName.charCodeAt(b)<sortName.charCodeAt(b)){
+                                sortGreater=false;
+                                break;
+                            } else if (arrName.charCodeAt(b)>sortName.charCodeAt(b)){
+                                sortGreater=true;
+                                break;
+                            }
+                        }
+                        if (sortGreater===false){break;}
+                    }
+                    sortedResults.splice(a,0,arr[i]);
+                }
+                return sortedResults;
+            }
+
+            //populate table with firebase data
+            function populateTables(tableDB){
+                var newTableHTML = "<tr><th>Nombre Completo</th><th>Año</th><th>E-mail</th></tr>";
+                for (var i=0;i<tableDB.length;i++){newTableHTML+="<tr><td>"+tableDB[i]["Name"]+"</td><td>"+tableDB[i]["Year"]+"</td><td>"+tableDB[i]["Email"]+"</td></tr>";}
+                document.getElementById("StudentInfo").innerHTML = newTableHTML;
+            }
+
+            // Import the functions you need from the SDKs you need
+            //import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+            // Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+            // Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyBdjBmQZgTDgUDsUnHYr5RsB78bkMJMVvw",
+              authDomain: "enroll-spanish-school.firebaseapp.com",
+              databaseURL: "https://enroll-spanish-school-default-rtdb.firebaseio.com",
+              projectId: "enroll-spanish-school",
+              storageBucket: "enroll-spanish-school.appspot.com",
+              messagingSenderId: "935629740149",
+              appId: "1:935629740149:web:fcce9b2e4ae0ec3a1a803c"
+            };
+          
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            var database=firebase.database();
+            var DBstudents=database.ref("Students");
+            var DBresults=[];
+            function getData(data){
+                DBresults=data.val();
+                var sortedDB=sortFirebaseResults(DBresults);
+                populateTables(sortedDB);
+            }
+            DBstudents.on("value",getData);
+        </script>
+        <!--
+        <a href="https://www.google.com"><button>Google</button></a>
+        button example^
+        -->
+    </head>
+    <body>
+        <div class="titleLogo" style="position:fixed;left:0px;top:0px;">
+            <img src="Images/Logo.png" alt="Logo" style="width:145px;height:145px">
+        </div>
+        <div class="titleTop" style="position:fixed;top:0px;">
+            <h1>La Preescolar de Granada</h1>
+        </div>
+        <div class="navbar" style="position:fixed;left:0px;top:145px;">
+            <a class="inactive" href="index.html">Página Principal</a>
+            <a class="inactive" href="mission.html">Misión</a>
+            <a class="inactive" href="rules.html">Normas</a>
+            <a class="inactive" href="schedule.html">Calendario</a> <!--also has daycare-->
+            <a class="inactive" href="colors.html">Uniforme</a>
+            <a class="inactive" href="enroll.html">Inscribirse</a>
+            <a class="active" href="javascript:void(0)">Directorio</a>
+        </div>
+        <table id="StudentInfo" style="position:fixed;top:250px;"></table>
+    </body>
+</html>
