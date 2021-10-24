@@ -16,7 +16,7 @@
             function doFirebase(){
                 if (document.getElementById("YearInput").value<1||document.getElementById("YearInput").value>5||document.getElementById("YearInput").value=="e"||document.getElementById("YearInput").value=="π"){
                     document.getElementById("YearInput").value="";
-                    alert("Valor incorrecto para la entrada del año.");
+                    alert("Valor incorrecto para la entrada del año. Solamente uno a tres es correcto.");
                     return;
                 }
                 if (emailIsValid(document.getElementById("EmailInput").value)===false){
@@ -79,7 +79,10 @@
                     newDBresults=DBresults;
                     newDBresults.push({"Email":document.getElementById("EmailInput").value,"Name":newNameInput,"Year":document.getElementById("YearInput").value});
                     firebase.database().ref("Students").set(newDBresults);
-                    alert("Gracias por inscribirse.")
+                    document.getElementById("YearInput").value="";
+                    document.getElementById("NameInput").value="";
+                    document.getElementById("EmailInput").value="";
+                    alert("Gracias por inscribirse.");
                 }
                 DBstudents.on("value",getData);
                 //firebase.database().ref("Students").set([{"Email":"jachuhs@nuevaschool.org","Name":"John","Year":"2"}]);
